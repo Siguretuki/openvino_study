@@ -4,6 +4,7 @@
 
 OpenVINO の勉強に使用する
 Intel の企業プロジェクトの為に勉強した
+まとめてもいないメモ書き程度のページ。
 
 401-object-detection.ipynb 　->　引用元コード
 
