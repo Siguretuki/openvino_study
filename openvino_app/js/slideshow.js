@@ -1,4 +1,4 @@
-$('.slider').slick({
+$('.slidecontent').slick({
     autoplay: true,//自動的に動き出すか。初期値はfalse。
     infinite: true,//スライドをループさせるかどうか。初期値はtrue。
     speed: 500,//スライドのスピード。初期値は300。
