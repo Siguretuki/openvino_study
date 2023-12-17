@@ -6,59 +6,96 @@
 <meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<!--==============レイアウトを制御する独自のCSSを読み込み===============
 <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/css/6-1-7.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/css/6-1-7.css">-->
 
+<link rel="stylesheet" href="./css/slick.css">
+<link rel="stylesheet" type="text/css" href="./css/reset.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="../bootstrapV5.3/css/bootstrap.css">
 </head>
 
 <body>
-<div class="container text-align-center my-auto" style="max-width: 80%;">
-  <h2>複数画像を中央に注目させて見せる</h2>
+<h1 class="text-center pt-5">Open VINOのデモを実際に体験する</h1>
+<p class="text-center p-3">スライドするカードをクリックしてデモンストレーションに進みましょう。</p>
+<div class="bg-light p-5">
 
   <ul class="slidecontent">
     <li>
-      <a href="./pages/sample.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample.html">
+        <img src="./img/object_detection.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">物体検出</h1>
+          </div>
+        </a>
+      </div>
     </li>
     <li>
-      <a href="./pages/sample2.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample2.html">
+        <img src="./img/segmentation.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">セグメンテーション</h1>
+          </div>
+        </a>
+      </div>
     </li>
     <li>
-      <a href="./pages/sample.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample.html">
+        <img src="./img/object_detection.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">物体検出</h1>
+          </div>
+        </a>
+      </div>
     </li>
     <li>
-      <a href="./pages/sample2.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_04.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample2.html">
+        <img src="./img/segmentation.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">セグメンテーション</h1>
+          </div>
+        </a>
+      </div>
     </li>
     <li>
-      <a href="./pages/sample.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_05.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample.html">
+        <img src="./img/object_detection.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">物体検出</h1>
+          </div>
+        </a>
+      </div>
     </li>
     <li>
-      <a href="./pages/sample2.html">
-      <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_06.jpg" alt="">
-    </a>
+      <div class="card shadow-lg" style="width: 40vm;">
+        <a href="./pages/sample2.html">
+        <img src="./img/segmentation.gif" class="card-img-top" alt="...">
+          <div class="card-body bg-primary">
+            <h1 class="card-title text-white">セグメンテーション</h1>
+          </div>
+        </a>
+      </div>
     </li>
-  <!--/slidecontent--></ul>
-  <p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>
+  <!--/slidecontent-->
+  </ul>
+  <!--<p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>-->
   
 </div>
 <!--
 <script src="./js/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
--->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/js/6-1-7.js"></script>
+-->
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/slick.min.js"></script>
 <script src="./js/slideshow.js"></script>
 
 </body>

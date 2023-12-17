@@ -9,9 +9,10 @@
 }
 
 .slidecontent img {
-    width:40vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
+    width:50vw;/*スライダー内の画像を60vwにしてレスポンシブ化*/
     height:auto;
 }
+
 
 .slidecontent .slick-slide {
   transform: scale(0.8);/*左右の画像のサイズを80%に*/
@@ -89,8 +90,6 @@ h2,p {
 }
 
 ul{
-  margin:0;
-  padding: 0;
   list-style: none;
 }
 
