@@ -18,3 +18,5 @@ qiita 情報.url ->　参考にした qiita のページ
 OpenVINO toolkit model zoo https://github.com/openvinotoolkit/open_model_zoo/blob/master/demos/object_detection_demo/python/README.md
 
 openvino Qiita link -> https://qiita.com/Intel_Developer/items/8214155038df14adee79
+
+スライドショーライブラリ -> https://kenwheeler.github.io/slick/

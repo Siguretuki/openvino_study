@@ -16,11 +16,12 @@ from tkinter import filedialog,simpledialog,messagebox
 from PIL import Image, ImageTk
 
 # Fetch notebook_utils module
-urllib.request.urlretrieve(
-    url='https://raw.githubusercontent.com/openvinotoolkit/openvino_notebooks/main/notebooks/utils/notebook_utils.py',
-    filename='notebook_utils.py'
-)
-import notebook_utils as utils
+#urllib.request.urlretrieve(
+#    url='https://raw.githubusercontent.com/openvinotoolkit/openvino_notebooks/main/notebooks/utils/notebook_utils.py',
+#    filename='notebook_utils.py'
+#)
+# notebook_utilsをutilsファイルからインポート（オフライン用）
+from utils import notebook_utils as utils
 
 base_model_dir = Path("model")
 model_name = "ssdlite_mobilenet_v2"
