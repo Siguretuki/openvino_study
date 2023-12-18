@@ -1,3 +1,32 @@
-<h1>
-    sample2
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ファイルドラッグアンドドロップ</title>
+    <style>
+      #drop-area {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+    <link rel="stylesheet" href="../../bootstrapV5.3/css/bootstrap.css" />
+  </head>
+  <body>
+    <h1>Sample2</h1>
+    <div id="drop-area">
+      <p>
+        ファイルをドラッグアンドドロップするか、<label
+          class="text-primary"
+          for="file-input"
+          >ここをクリック</label
+        >してファイルを選択してください。
+      </p>
+      <input type="file" id="file-input" style="display: none" />
+      <div id="file-list"></div>
+    </div>
+
+    <script src="../js/dragAndDrop.js"></script>
+  </body>
+</html>

@@ -100,3 +100,7 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+
+.content-title {
+  background-color: #41728a;
+}
