@@ -8,6 +8,8 @@ Intel の企業プロジェクトの為に勉強した
 
 401-object-detection.ipynb 　->　引用元コード
 
+openvino_app file ->デモとして動かすアプリケーションを格納
+
 object_detection.py -> 物体検出デモのコードを引用
 GPT 君にちょこっと修正してもらって自分のファイルの動画を使って実行できるようにしてある
 
