@@ -10,7 +10,7 @@
 }
 
 .slidecontent img {
-  width: 50vw; /*スライダー内の画像を60vwにしてレスポンシブ化*/
+  width: 50vw; /*スライダー内の画像を50vwにしてレスポンシブ化*/
   height: auto;
 }
 
@@ -60,7 +60,7 @@
 
 .slick-dots {
   text-align: center;
-  margin: 20px 0 0 0;
+  margin: 30px 0 0 0;
 }
 
 .slick-dots li {
@@ -85,7 +85,7 @@
 /*========= レイアウトのためのCSS ===============*/
 
 body {
-  background: #eee;
+  background: #ffffff;
 }
 
 ul {
