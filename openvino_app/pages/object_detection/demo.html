@@ -4,24 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../bootstrapV5.3/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../../bootstrapV5.3/css/bootstrap.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>this is a object detection demo page</h1>
-      <div class="row">
+    <div class="container" style="background-color: #004a86">
+      <h1 class="text-white">this is a object detection demo page</h1>
+      <div class="row" class="text-white">
         <div class="col-6 border" id="inputContent">
-          <h2 class="p-3">こんな感じのことしますよ</h2>
-          <p class="p-3">
-            tatoeba, korewotukaeba konnna subarasii koto ga dekiruyouni
-            narimasu.<br />
-            konnnakoto toka annnakoto toka dekiru youni narimasu.
+          <div
+            id="drop-area"
+            class="p-3 border border-primary justify-content-center"
+          >
+            <input type="file" id="file-input" style="display: none" />
+            <img src="../../img/draganddrop.jpg" id="selected-image" />
+            <div id="file-list"></div>
+          </div>
+          <p class="p-3 text-white text-center">
+            アップロードする動画ファイルをドラッグ＆ドロップします。
           </p>
+          <div class="d-flex p-3">
+            <button class="btn btn-primary mx-auto">
+              <label for="file-input"> またはファイルを選択 </label>
+            </button>
+          </div>
         </div>
         <div class="col-6 border" id="outputContent">
           <img
             class="p-4"
-            src="../img/object_detection.gif"
+            src="../../img/object_detection.gif"
             alt=""
             style="max-width: 90%"
           />
@@ -29,5 +39,6 @@
         <a href="./result.html">実行し、結果を確認する</a>
       </div>
     </div>
+    <script src="../../js/dragAndDrop.js"></script>
   </body>
 </html>
