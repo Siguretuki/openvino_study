@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop Video Player</title>
+  <style>
+    #dropArea {
+      width: 100%;
+      height: 300px;
+      border: 2px dashed #ccc;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #videoPlayer {
+      width: 100%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="dropArea">
+  <p>動画ファイルをドラッグアンドドロップしてください。</p>
+</div>
+
+<video id="videoPlayer" controls>
+  Your browser does not support the video tag.
+</video>
+
+<script>
+  const dropArea = document.getElementById('dropArea');
+  const videoPlayer = document.getElementById('videoPlayer');
+
+  // ドラッグオーバー時の処理
+  dropArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropArea.style.borderColor = '#39a7d0';
+  });
+
+  // ドロップ時の処理
+  dropArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropArea.style.borderColor = '#ccc';
+
+    const files = e.dataTransfer.files;
+
+    if (files.length > 0) {
+      const videoFile = files[0];
+      const videoURL = URL.createObjectURL(videoFile);
+
+      // 動画を表示して再生
+      videoPlayer.src = videoURL;
+      videoPlayer.style.display = 'block';
+    }
+  });
+
+  // ドラッグエリア外でドロップされた場合の処理
+  dropArea.addEventListener('dragleave', () => {
+    dropArea.style.borderColor = '#ccc';
+  });
+</script>
+
+</body>
+</html>
