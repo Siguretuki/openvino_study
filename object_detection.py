@@ -60,9 +60,12 @@ print("Available devices:", core.available_devices)
 # Manually input the device
 #device_input = input("Enter the device (or 'AUTO' for automatic selection): ")
 #device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
-messagebox.showinfo("You can use these devices", core.available_devices)
-device_input = simpledialog.askstring("Device Selection", "Enter the device (or 'AUTO' for automatic selection):")
-device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
+# ask devices
+#messagebox.showinfo("You can use these devices", core.available_devices)
+#device_input = simpledialog.askstring("Device Selection", "Enter the device (or 'AUTO' for automatic selection):")
+#device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
+use_device = 'CPU'
+device_value = use_device if use_device in core.available_devices + ["AUTO"] else 'AUTO'
 
 
 model = core.read_model(model=converted_model_path)

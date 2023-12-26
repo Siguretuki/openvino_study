@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../../bootstrapV5.3/css/bootstrap.css" />
 </head>
 <body>
-    <h1>this is a result page</h1>
-    <p>koko deha kekka wo hyouzi simasu.
-        <br>
-        kekka no download mo okonaeru youni site imasu.
-    </p>
+    <div class="container">
+        <h1 class="text-white p-3" style="background-color: #004a86">物体検出デモンストレーション結果</h1>
+        <div class="d-flex" style="background-color: #004a86">
+            <div class="col-6 p-3 d-flex" id="inputVideo">
+                <video controls id="selected-video" class="d-flex mx-auto" style="width: auto; height: 270px;"></video>
+            </div>
+            <div class="col-6 p-3 d-flex" id="resultVideo">
+                <video controls id="selected-video" class="d-flex mx-auto" style="width: auto; height: 270px;"></video>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
