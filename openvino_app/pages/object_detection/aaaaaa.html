@@ -1,0 +1,88 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動画表示ページ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #video-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>動画選択ページ</h1>
+
+  <input type="file" id="videoInput" accept="video/*">
+  <button onclick="showVideoPage()">動画を表示</button>
+
+  <div id="video-container">
+    <h1>動画表示ページ</h1>
+    <video id="selectedVideo" controls></video>
+  </div>
+
+  <script>
+    function showVideoPage() {
+      const videoInput = document.getElementById('videoInput');
+      const selectedVideo = document.getElementById('selectedVideo');
+      const videoContainer = document.getElementById('video-container');
+
+      if (videoInput.files.length > 0) {
+        const selectedFile = videoInput.files[0];
+        const objectURL = (window.URL || window.webkitURL).createObjectURL(selectedFile);
+
+        selectedVideo.src = objectURL;
+        videoContainer.style.display = 'block';
+      } else {
+        alert('動画ファイルを選択してください。');
+      }
+    }
+  </script>
+
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動画選択ページ</title>
+</head>
+<body>
+
+  <h1>動画選択ページ</h1>
+
+  <input type="file" id="videoInput" accept="video/*">
+  <a href="display.html" id="displayLink" style="text-decoration: none;">
+    <button onclick="prepareVideo()">動画を表示</button>
+  </a>
+
+  <script>
+    function prepareVideo() {
+      const videoInput = document.getElementById('videoInput');
+      const displayLink = document.getElementById('displayLink');
+
+      if (videoInput.files.length > 0) {
+        const selectedFile = videoInput.files[0];
+        const objectURL = (window.URL || window.webkitURL).createObjectURL(selectedFile);
+
+        // Store the object URL in session storage to pass it to the next page
+        sessionStorage.setItem('videoObjectURL', objectURL);
+      } else {
+        alert('動画ファイルを選択してください。');
+        // Prevent the link from navigating if no video is selected
+        displayLink.removeAttribute('href');
+      }
+    }
+  </script>
+
+</body>
+</html>

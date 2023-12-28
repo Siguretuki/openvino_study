@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動画表示ページ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #video-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>動画表示ページ</h1>
+
+  <div id="video-container">
+    <video id="selectedVideo" controls></video>
+  </div>
+
+  <script>
+    // Retrieve the object URL from session storage
+    const objectURL = sessionStorage.getItem('videoObjectURL');
+
+    if (objectURL) {
+      const selectedVideo = document.getElementById('selectedVideo');
+      const videoContainer = document.getElementById('video-container');
+
+      selectedVideo.src = objectURL;
+      videoContainer.style.display = 'block';
+    } else {
+      alert('動画ファイルが指定されていません。');
+      // Redirect back to the selection page if no video URL is found
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>
