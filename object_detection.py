@@ -20,6 +20,7 @@ from PIL import Image, ImageTk
 #    url='https://raw.githubusercontent.com/openvinotoolkit/openvino_notebooks/main/notebooks/utils/notebook_utils.py',
 #    filename='notebook_utils.py'
 #)
+
 # notebook_utilsをutilsファイルからインポート（オフライン用）
 from utils import notebook_utils as utils
 

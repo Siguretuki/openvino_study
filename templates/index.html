@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動画アップロードサーバー</title>
+    <link rel="stylesheet" href="../static/bootstrapV5.3/css/bootstrap.css"/>
+</head>
+<body>
+    <h1>動画アップロードサーバー</h1>
+
+    <!-- アップロードフォーム -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">動画ファイルを選択：</label>
+        <input type="file" name="file" accept="video/*">
+        <br>
+        <button type="submit">アップロード</button>
+    </form>
+
+    <hr>
+
+<div class="container">
+    <h1 class="text-white p-3" style="background-color: #004a86">物体検出デモンストレーション</h1>
+    <div class="p-5"></div>
+    <div class="row text-white pt-2" style="background-color: #004a86">
+        <div class="col-6" id="inputContent">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+            <div id="drop-area" class="p-5 d-flex justify-content-center mx-4">
+                <input type="file" id="file-input" style="display: none" name="file" accept=".mp4" />
+                <video controls id="selected-video" class="d-flex mx-auto col-md-12"></video>
+            </div>
+            <div id="file-list" class="mx-4 p-3 text-white text-center border">ここにファイル情報が表示されます</div>
+            <p class="p-3 text-white text-center">
+                アップロードする動画ファイルをドラッグ＆ドロップします。
+            </p>
+            <div class="d-flex pt-0 pb-3" id="drag-drop-area">
+                <label for="file-input" class="btn btn-primary btn-lg mx-auto fs-3 mb-0">
+                    またはファイルを選択
+                </label>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-light btn-lg me-5 fs-3">実行</button>
+                </div>
+            </div>
+        </form>
+        </div>
+
+        <div class="col-6">
+            <h1 class="text-white p-4">
+                動作原理
+            </h1>
+            <p class="text-white p-4 pt-0 fw-bold fs-6">
+                このデモアプリケーションは、起動時にコマンドラインの設定を読み込み、OpenVINO™ Runtimeプラグインにモデルを読み込みます。
+                その後、デモは画像ごとに推論を実行し、その結果を表示します。このデモは、クラス（オブジェクトの種類など）と色（表示のための色）
+                の関連付けがデフォルトで提供されており、必要であれば、テキストファイルを使用してクラスと色の関連付けを指定できます（--colorsという引数を使います）。
+                <br>
+                <br>
+                また、同時に処理される推論リクエストの数（-nireqパラメータ）に応じて、デモは以下のように振る舞います：
+                <br>
+                - nireqが１の場合：各画像の処理にかかる時間を最小限に抑えることを重視し、一つの画像を順番に処理します。
+                <br>
+                - nireqが複数の場合：デバイスの利用を最大限に引き出し、全体の処理性能を最大化しようとします。
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/js/dragAndDrop_video.js"></script>
+</body>
+</html>
