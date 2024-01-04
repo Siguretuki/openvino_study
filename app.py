@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, send_file, jsonify, redirect, url_for
+from flask import Flask, render_template, request, send_file, jsonify, redirect, url_for,send_from_directory
 import os
 from werkzeug.utils import secure_filename
+import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=None)
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -60,6 +61,19 @@ def add_header(r):
     r.headers["Expires"] = "0"
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
+
+@app.route('/static/<path:filename>')
+def static(filename):
+    directory_path = os.path.join(app.root_path, 'static')
+
+    last_modified = None
+    if '.css' in filename:
+        last_modified = datetime.datetime.now(datetime.timezone.utc)
+
+    max_age = app.get_send_file_max_age(filename)
+    return send_from_directory(
+        directory_path, filename, last_modified=last_modified, max_age=max_age
+    )
 
 # 以前のupload_file()を削除
 # 以前のdownload_file()を削除
