@@ -65,7 +65,7 @@ print("Available devices:", core.available_devices)
 #messagebox.showinfo("You can use these devices", core.available_devices)
 #device_input = simpledialog.askstring("Device Selection", "Enter the device (or 'AUTO' for automatic selection):")
 #device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
-use_device = 'CPU'
+use_device = 'GPU'
 device_value = use_device if use_device in core.available_devices + ["AUTO"] else 'AUTO'
 
 
