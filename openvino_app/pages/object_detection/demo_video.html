@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../../../bootstrapV5.3/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../css/overlay.css"/>
   </head>
   <body>
     <div class="container">
@@ -47,13 +48,24 @@
           <button class="btn btn-primary btn-lg mx-auto">
             <label for="file-input" class="fs-3 mb-0"> またはファイルを選択 </label>
           </button>
-          <a href="./result.html">
-            <button type="button" class="btn btn-light btn-lg me-5 fs-3">実行</button>
-        </a>
+            <button id="overlayButton" type="button" class="btn btn-light btn-lg me-5 fs-3">実行</button>
           <!-- 期待する動作 >> 選択した動画を送信する -->
         </div>
       </div>
     </div>
+  
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+      <p>推論を開始しました。これには数分かかる場合があります…
+        <br>
+        推論が完了すると通知されます。
+      </p>
+      <button id="closeOverlayButton" class="btn btn-light">閉じる</button>
+    </div>
+  </div>
+
+  <script src="../../js/overlay.js"></script>
     <script src="../../js/dragAndDrop_video.js"></script>
   </body>
 </html>
