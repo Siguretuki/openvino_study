@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.style.display = "flex";
     setTimeout(function () {
       var result = confirm(
-        "推論が完了しました。結果ページに移動します。ここでキャンセルすると、推論結果は破棄され最初から開始されます。"
+        "推論が完了しました。結果ページに移動します。キャンセルすると、推論結果は破棄され最初から開始されます。"
       );
       if (result) {
         window.location.href = "result.html";
