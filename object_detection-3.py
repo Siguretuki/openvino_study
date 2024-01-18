@@ -144,10 +144,10 @@ def convert_frame_for_tkinter(frame):
 def run_object_detection_tkinter(source=0, flip=False, use_popup=False, skip_first_frames=0, output_video_path=None):
     player = None
     video_writer = None
-
+    cap = cv2.VideoCapture(source)
     try:
         player = utils.VideoPlayer(
-            source=source, flip=flip, fps=30, skip_first_frames=skip_first_frames
+            source=source, flip=flip, fps=20, skip_first_frames=skip_first_frames
         )
         player.start()
 
@@ -156,7 +156,7 @@ def run_object_detection_tkinter(source=0, flip=False, use_popup=False, skip_fir
 
         label = ttk.Label(root)
         label.pack()
-
+        original_fps = cap.get(cv2.CAP_PROP_FPS)
         processing_times = collections.deque()
 
         def update_frame():
@@ -212,7 +212,7 @@ def run_object_detection_tkinter(source=0, flip=False, use_popup=False, skip_fir
             if output_video_path:
                 if video_writer is None:
                     fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # or 'H264'
-                    video_writer = cv2.VideoWriter(output_video_path, fourcc, 30, (frame.shape[1], frame.shape[0]))
+                    video_writer = cv2.VideoWriter(output_video_path, fourcc, original_fps, (frame.shape[1], frame.shape[0]))
                 video_writer.write(frame)
 
             image = convert_frame_for_tkinter(frame)
