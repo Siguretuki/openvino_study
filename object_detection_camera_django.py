@@ -14,6 +14,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog,simpledialog,messagebox
 from PIL import Image, ImageTk
+import os
+os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
 
 # Fetch notebook_utils module
 #urllib.request.urlretrieve(
@@ -130,9 +132,10 @@ def convert_frame_for_tkinter(frame):
     image = ImageTk.PhotoImage(image=image)
     return image
 
-def run_object_detection(input_video_path,output_video_path):
-    #入出力の設定
-    cap = cv2.VideoCapture(input_video_path)
+def run_object_detection(output_video_path):
+    #入出力の設定q
+    cap = cv2.VideoCapture(0)
+    time.sleep(5)
     fps = cap.get(cv2.CAP_PROP_FPS)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     frame_width = int(cap.get(3))
@@ -187,12 +190,14 @@ def run_object_detection(input_video_path,output_video_path):
         )
         #結果の書き込み
         out.write(frame)
-        
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
     cap.release()
     out.release()
     cv2.destroyAllWindows()
 
 
 output_video_path = "./uploads/output_video.mp4"
-input_video_path = filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.avi;*.mkv")])
-run_object_detection(input_video_path,output_video_path)
+run_object_detection(output_video_path)
