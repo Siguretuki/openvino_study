@@ -56,18 +56,8 @@ if not converted_model_path.exists():
 
 core = ov.Core()
 
-print("Available devices:", core.available_devices)
-
-# Manually input the device
-#device_input = input("Enter the device (or 'AUTO' for automatic selection): ")
-#device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
-# ask devices
-#messagebox.showinfo("You can use these devices", core.available_devices)
-#device_input = simpledialog.askstring("Device Selection", "Enter the device (or 'AUTO' for automatic selection):")
-#device_value = device_input.upper() if device_input.upper() in core.available_devices + ["AUTO"] else 'AUTO'
 use_device = 'CPU'
 device_value = use_device if use_device in core.available_devices + ["AUTO"] else 'AUTO'
-
 
 model = core.read_model(model=converted_model_path)
 compiled_model = core.compile_model(model=model, device_name=device_value)
@@ -140,100 +130,68 @@ def convert_frame_for_tkinter(frame):
     image = ImageTk.PhotoImage(image=image)
     return image
 
-def run_object_detection_tkinter(source=0, flip=False, use_popup=False, skip_first_frames=0, output_video_path=None):
-    player = None
-    video_writer = None
-    cap = cv2.VideoCapture(source)
-    try:
-        player = utils.VideoPlayer(
-            source=source, flip=flip, fps=20, skip_first_frames=skip_first_frames
+def run_object_detection(input_video_path,output_video_path):
+    #入出力の設定
+    cap = cv2.VideoCapture(input_video_path)
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    frame_width = int(cap.get(3))
+    frame_height = int(cap.get(4))
+    out = cv2.VideoWriter(output_video_path,fourcc,fps,(frame_width,frame_height))
+
+    while cap.isOpened():
+        ret,frame = cap.read()
+        if not ret:
+            #推論の完了を宣言、ここに結果ページへの移動プログラムを追記予定
+            print("Source ended")
+            break
+        #前処理
+        scale = 1280 / max(frame.shape)
+        if scale < 1:
+            frame = cv2.resize(
+                src=frame,
+                dsize=None,
+                fx=scale,
+                fy=scale,
+                interpolation=cv2.INTER_AREA,
+            )
+
+        input_img = cv2.resize(
+            src=frame, dsize=(width, height), interpolation=cv2.INTER_AREA
         )
-        player.start()
+        input_img = input_img[np.newaxis, ...]
+        #推論の実行
+        start_time = time.time()
+        results = compiled_model([input_img])[output_layer]
+        stop_time = time.time()
+        boxes = process_results(frame=frame, results=results)
 
-        root = tk.Tk()
-        root.title("Object Detection Result")
-
-        label = ttk.Label(root)
-        label.pack()
-        original_fps = cap.get(cv2.CAP_PROP_FPS)
+        frame = draw_boxes(frame=frame, boxes=boxes)
         processing_times = collections.deque()
+        processing_times.append(stop_time - start_time)
+        if len(processing_times) > 200:
+            processing_times.popleft()
 
-        def update_frame():
-            nonlocal processing_times, video_writer
+        _, f_width = frame.shape[:2]
+        processing_time = np.mean(processing_times) * 1000
+        fps = 1000 / processing_time
+        cv2.putText(
+            img=frame,
+            text=f"Inference time: {processing_time:.1f}ms ({fps:.1f} FPS)",
+            org=(20, 40),
+            fontFace=cv2.FONT_HERSHEY_COMPLEX,
+            fontScale=f_width / 1000,
+            color=(0, 0, 255),
+            thickness=1,
+            lineType=cv2.LINE_AA,
+        )
+        #結果の書き込み
+        out.write(frame)
+    cap.release()
+    out.release()
+    cv2.destroyAllWindows()
 
-            frame = player.next()
-            if frame is None:
-                print("Source ended")
-                root.destroy()
-                return
 
-            scale = 1280 / max(frame.shape)
-            if scale < 1:
-                frame = cv2.resize(
-                    src=frame,
-                    dsize=None,
-                    fx=scale,
-                    fy=scale,
-                    interpolation=cv2.INTER_AREA,
-                )
-
-            input_img = cv2.resize(
-                src=frame, dsize=(width, height), interpolation=cv2.INTER_AREA
-            )
-            input_img = input_img[np.newaxis, ...]
-
-            start_time = time.time()
-            results = compiled_model([input_img])[output_layer]
-            stop_time = time.time()
-            boxes = process_results(frame=frame, results=results)
-
-            frame = draw_boxes(frame=frame, boxes=boxes)
-
-            processing_times.append(stop_time - start_time)
-
-            if len(processing_times) > 200:
-                processing_times.popleft()
-
-            _, f_width = frame.shape[:2]
-            processing_time = np.mean(processing_times) * 1000
-            fps = 1000 / processing_time
-            cv2.putText(
-                img=frame,
-                text=f"Inference time: {processing_time:.1f}ms ({fps:.1f} FPS)",
-                org=(20, 40),
-                fontFace=cv2.FONT_HERSHEY_COMPLEX,
-                fontScale=f_width / 1000,
-                color=(0, 0, 255),
-                thickness=1,
-                lineType=cv2.LINE_AA,
-            )
-
-            if output_video_path:
-                if video_writer is None:
-                    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # or 'H264'
-                    video_writer = cv2.VideoWriter(output_video_path, fourcc, original_fps, (frame.shape[1], frame.shape[0]))
-                video_writer.write(frame)
-
-            image = convert_frame_for_tkinter(frame)
-            label.config(image=image)
-            label.image = image
-
-            root.after(1, update_frame)
-
-        update_frame()
-        root.mainloop()
-
-    except KeyboardInterrupt:
-        print("Interrupted")
-    except RuntimeError as e:
-        print(e)
-    finally:
-        if player is not None:
-            player.stop()
-        if video_writer is not None:
-            video_writer.release()
-
-# Specify the path where you want to save the output video with .mp4 extension
 output_video_path = "./uploads/output_video.mp4"
-video_file = filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.avi;*.mkv")])
-run_object_detection_tkinter(source=video_file, flip=False, use_popup=False, output_video_path=output_video_path)
+input_video_path = filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.avi;*.mkv")])
+run_object_detection(input_video_path,output_video_path)
