@@ -8,11 +8,7 @@ import numpy as np
 import openvino as ov
 from openvino.tools.mo.front import tf as ov_tf_front
 from openvino.tools import mo
-import ipywidgets as widgets
-from IPython import display
-import tkinter as tk
-from tkinter import ttk
-from tkinter import filedialog,simpledialog,messagebox
+from tkinter import filedialog
 from PIL import Image, ImageTk
 
 # Fetch notebook_utils module
@@ -21,9 +17,10 @@ from PIL import Image, ImageTk
 #    filename='notebook_utils.py'
 #)
 
-# notebook_utilsをutilsファイルからインポート（オフライン用）
+# notebook_utilsをutilsフォルダからインポート（オフライン用）
 from utils import notebook_utils as utils
 
+#モデルの設定
 base_model_dir = Path("model")
 model_name = "ssdlite_mobilenet_v2"
 archive_name = Path(f"{model_name}_coco_2018_05_09.tar.gz")
@@ -142,7 +139,7 @@ def run_object_detection(input_video_path,output_video_path):
     while cap.isOpened():
         ret,frame = cap.read()
         if not ret:
-            #推論の完了を宣言、ここに結果ページへの移動プログラムを追記予定
+            #推論の完了、ここに結果ページへの移動プログラムを追記予定
             print("Source ended")
             break
         #前処理
@@ -192,7 +189,7 @@ def run_object_detection(input_video_path,output_video_path):
     out.release()
     cv2.destroyAllWindows()
 
-
+#使う場所によって要変更
 output_video_path = "./uploads/output_video.mp4"
 input_video_path = filedialog.askopenfilename(filetypes=[("Video Files", "*.mp4;*.avi;*.mkv")])
 run_object_detection(input_video_path,output_video_path)
