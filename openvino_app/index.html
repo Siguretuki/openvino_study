@@ -13,7 +13,115 @@
   </head>
 
   <body>
-    <div class="content-title">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#hero">OpenVINO™ ツールキットとは</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#information">最新情報</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#gaiyou">概要</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#download">ダウンロード</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#technique">活用のテクニック</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#example">導入事例</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#learning">学ぶ</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#demo">デモンストレーション</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link" href="#more">もっと詳しく</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="" style="margin-top: 100px;" id="hero">
+      <img src="./img/ovHero.png" alt="">
+    </div>
+    <div class="container p-5 text-center">
+      <h1 class="fw-normal">
+        AI を加速する無償のツール
+      </h1>
+      <p>
+        OpenVINO™ ツールキットは、インテルが無償で提供しているインテル製の CPU や GPU、VPU、FPGA などのパフォーマンスを最大限に活用して、コンピューター・ビジョン、画像関係をはじめ、自然言語処理や音声処理など、幅広いディープラーニング・モデルで推論を最適化し高速化する推論エンジン / ツールスイートです。
+        <br>
+        AI アプリケーションの推論部分に OpenVINO™ ツールキットを使用する事で、サービスやソリューションの開発者は、ハードウェアを変更することなく、AI のパフォーマンスを加速できます。
+      </p>
+    </div>
+
+    <div class="pt-5 pb-5" id="information">
+      <img src="./img/ovInformation.png" alt="">
+    </div>
+
+    <div class="container pt-5 pb-5" id="gaiyou">
+      <div class="row align-items-center">
+        <div class="col-md-7 p-3">
+          <h2>OpenVINO™ ツールキットの概要</h2>
+          <p>OpenVINO™ ツールキットは、シンプルなコード記述で動作するため、AI の導入や保守を簡素化することができます。インテルの CPU や GPU、VPU、FPGA などの各種デバイスで共通したコードを使用でき、優れた推論エンジンにより AI アプリケーションのパフォーマンスをそれぞれのデバイスに最適化して展開可能です。最適化された事前学習済みモデルを提供する Open Model Zoo (OMZ) や TensorFlow、PyTorch、Caffe* などの一般的なフレームワークを使用してトレーニングしたモデルを変換し、最適化する Model Optimizer を使用できます。</p>
+        </div>
+        <div class="col-md-5 p-3">
+          <img src="./img/ovGaiyou.png" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <div class="container pt-5 pb-5" id="gaiyou">
+      <div class="row align-items-center">
+        <div class="col-md-5 p-3">
+          <img src="./img/ovGarden.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-7 p-3">
+          <h2>インテル® AI PC Garden ～ AI が未来を創る～</h2>
+          <p>インテルは、AI PC を先導する新しいコミュニティー「インテル® AI PC Garden」を開設します。
+            <br><br>
+            AI アプリケーションの開発者や、AI をビジネスに戦略的に活かしていこうと考えているスタートアップ企業に、OpenVINO™ ツールキットを使用した最新テクノロジーやベスト・プラクティスを学び合う場を提供していきます。
+            <br><br>
+            知識の共有の促進やテクニカルな質問、そしてディスカッションの場として、専用の Discord を立ち上げておりますので、興味ある方はぜひアクセスしてください。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-title pt-5 pb-3 justify-content-center" id="download">
+      <h1 class="text-center text-white">
+        OpenVINO™ ツールキットの
+      </br>
+      ダウンロードはこちら
+      </h2>
+        <p class="text-center">
+          <a href="#" type="button" class="btn btn-light mx-auto">
+          OpenVINO™ ツールキットをダウンロード
+        </a>
+        </p>
+    </div>
+
+    <div class="pt-5" id="technique">
+      <img src="./img/ovTechnique.png" alt="">
+      <img src="./img/ovTechnique2.png" alt="">
+    </div>
+    <div class="pt-5" id="example">
+      <img src="./img/ovExample.png" alt="">
+      <img src="./img/ovExample2.png" alt="">
+      <img src="./img/ovExample3.png" alt="">
+    </div>
+    <div class="pt-5" id="learning">
+      <img src="./img/ovLearning.png" alt="">
+    </div>
+    <!--main content-->
+    <div class="content-title pt-5" id="demo">
       <h2 class="text-center pt-5 text-white">
         OpenVINO™ ツールキットの
       </br>
@@ -83,6 +191,11 @@
         </li>
         <!--/slidecontent-->
       </ul>
+
+      <div class="" id="more">
+        <img src="./img/ovMore.png" alt="" class="mt-5">
+        <img src="./img/ovMore2.png" alt="">
+      </div>
       <!--<p>使用したライブラリ：<a href="https://kenwheeler.github.io/slick/" target="_blank">https://kenwheeler.github.io/slick/</a></p>-->
       <!--
       <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -124,9 +237,8 @@
         </div>
       </div>-->
     </div>
-    <footer>
-      <p class="text-center mt-3">copyright 2023 Siguretuki</p>
-      <p class="text-center">teamSC OpenVINO project</p>
+    <footer class="bg-secondary p-2 text-white">
+      <p class="text-center pt-3">teamSC OpenVINO project</p>
     </footer>
 
     <script src="./js/jquery-3.4.1.min.js"></script>
