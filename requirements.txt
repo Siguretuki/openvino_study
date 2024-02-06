@@ -1,0 +1,10 @@
+Django
+whitenoise
+openvino==2023.2.0
+openvino-dev==2023.2.0
+ipython
+ipywidgets
+opencv-python==4.5.5.64
+#numpy==1.26.2
+pillow
+tensorflow
