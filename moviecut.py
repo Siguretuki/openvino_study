@@ -12,10 +12,10 @@ def cut_video(input_file, output_file, duration):
 
 if __name__ == "__main__":
     # 入力ファイルのパス
-    input_file_path = "./sample_video_data/test360p.mp4"
+    input_file_path = "./uploads/test.mp4"
 
     # 出力ファイルのパス
-    output_file_path = "./sample_video_data/test360pCut.mp4"
+    output_file_path = "./uploads/test2.mp4"
 
     # 切り取りたい秒数をテキスト入力で受け取る
     duration = float(input("残したい秒数を入力してください: "))
