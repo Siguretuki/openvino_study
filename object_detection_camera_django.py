@@ -137,7 +137,7 @@ def run_object_detection(output_video_path):
     cap = cv2.VideoCapture(0)
     time.sleep(5)
     fps = cap.get(cv2.CAP_PROP_FPS)
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    fourcc = cv2.VideoWriter_fourcc(*'h264')
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
     out = cv2.VideoWriter(output_video_path,fourcc,fps,(frame_width,frame_height))
