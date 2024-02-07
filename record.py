@@ -4,7 +4,7 @@ import cv2
 cap = cv2.VideoCapture(0)  # 0はデフォルトのカメラを使用することを示します
 
 # 動画の設定
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # mp4形式を使用する場合
+fourcc = cv2.VideoWriter_fourcc(*'h264')  # mp4形式を使用する場合
 width, height = 640, 480  # 画像の幅と高さを設定
 out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (width, height))  # 出力ファイルの設定
 
